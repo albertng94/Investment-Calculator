@@ -1,8 +1,8 @@
-import UserInput from "./components/UserInput"
+import UserInputSection from "./components/UserInput/UserInputSection.jsx"
 
 function App() {
   return (
-    <UserInput/>
+    <UserInputSection />
   )
 }
 
