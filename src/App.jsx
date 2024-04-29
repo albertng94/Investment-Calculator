@@ -1,12 +1,13 @@
 import { useState } from "react";
-import UserInputSection from "./components/UserInput/UserInputSection.jsx"
-import ResultsTable from "./components/Results/ResultsTable.jsx"
+import UserInputSection from "./components/UserInput/UserInputSection.jsx";
+import ResultsTable from "./components/Results/ResultsTable.jsx";
+
 
 const investmentData = {
-  initialInvestment: "",
-  annualInvestment: "",
-  expectedReturn: "",
-  duration: ""
+  initialInvestment: null,
+  annualInvestment: null,
+  expectedReturn: null,
+  duration: null
 };
 
 
@@ -17,14 +18,16 @@ function App() {
     function handleInputChange(event) {
         setUserData((prevData) => {
             let updatedData = {...prevData};
-            console.log(updatedData);
             for (let key in updatedData) {
                 if (event.target.className === key) {
-                    updatedData[key] = event.target.value;
-                    console.log(updatedData);
+                  if (event.target.className === "duration" && Number(event.target.value) < 1) {
+                    alert("DURATION must have a positive number.");
+                    event.target.value = null;
+                  } else {
+                    updatedData[key] = Number(event.target.value);
+                  }
                 }
             }
-            console.log(updatedData);
             return updatedData;
         });
     }
@@ -33,7 +36,7 @@ function App() {
   return (
     <>
       <UserInputSection onChange={handleInputChange}/>
-      <ResultsTable />
+      <ResultsTable updatedData={userData}/>
     </>
   )
 }

@@ -2,7 +2,7 @@ import Input from "./Input.jsx";
 import { INPUTS_DATA } from "./INPUTS_DATA.js";
 
 
-export default function UserInputSection({onChange}) {
+export default function UserInputSection({ onChange }) {
     return (
         <form id="user-input">
             <div className="input-group">

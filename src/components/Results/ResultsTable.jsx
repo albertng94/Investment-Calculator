@@ -1,4 +1,10 @@
-export default function ResultsTable() {
+import { calculateInvestmentResults, formatter } from "../../util/investment.js";
+
+export default function ResultsTable({ updatedData }) {
+
+    let investmentResults = calculateInvestmentResults(updatedData);
+    console.log(investmentResults);
+
     return (
         <table id="result">
             <thead>
