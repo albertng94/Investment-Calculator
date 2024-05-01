@@ -3,12 +3,14 @@ import UserInputSection from "./components/UserInput/UserInputSection.jsx";
 import ResultsTable from "./components/Results/ResultsTable.jsx";
 
 
+
 const investmentData = {
   initialInvestment: null,
   annualInvestment: null,
   expectedReturn: null,
   duration: null
 };
+
 
 
 function App() {
