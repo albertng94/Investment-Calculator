@@ -2,7 +2,7 @@ import { calculateInvestmentResults, formatter } from "../../util/investment.js"
 
 function buildResultsArray(userData, investmentResults) {
 
-    let resultsTable = [];
+    let finalResultsArray = [];
     let investedCapital;
     let totalInterest;
 
@@ -24,11 +24,11 @@ function buildResultsArray(userData, investmentResults) {
             investedCapital
         ];
         
-        resultsTable.push(resultsRow);
+        finalResultsArray.push(resultsRow);
     
     }
 
-    return resultsTable;
+    return finalResultsArray;
 
 }
 
@@ -52,6 +52,18 @@ export default function ResultsTable({ updatedData }) {
                     <th>Invested Capital</th>
                 </tr>
             </thead>
+            <tbody>
+                {finalResultsArray.map((resultRow, rowIndex) => (
+                    <tr key={rowIndex}>
+                        {resultRow.map((resultValue, valueIndex) => (
+                            <td key={valueIndex}>
+                                {valueIndex === 0 && resultValue}
+                                {valueIndex !== 0 && formatter.format(resultValue)}
+                             </td>
+                        ))}
+                    </tr>
+                ))}
+            </tbody>
         </table>
     )
 }
